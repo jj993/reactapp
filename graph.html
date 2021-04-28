@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Obesity Levels Graph
+    </title>
+    <style type="text/css">
+
+    svg{
+      background: #f0f0f0;
+    }
+	
+       .button{
+          background: teal;
+          padding: 5px 5px;
+          margin-left: 15px;
+        }
+        .button:hover{
+          background: brown;
+          padding: 5px 5px;
+        }
+
+        #inner{
+          margin-left:15%;
+        }
+
+        #outer{
+          width: 80%;
+          margin-left: 10%;
+          margin-right: 10%;
+          margin-top: 30px;
+        }
+        /* CSS for the legend */
+        .legend {
+          font: 10px arial, sans-serif
+        }
+        .legend-rect {
+          stroke-width: 1 ;
+          fill: LightGrey ;
+          stroke: black
+        }
+
+        .line {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2px;
+      }
+      </style>
+    <link rel="stylesheet"  href="css/main.css">
+    
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="obesityLevels.js"></script>
+  </head>
+  <body style=" margin-top: 0; ">
+  <header style="margin-bottom: 2%; margin-top: 0; ">
+
+    <a href = "index.html" id="logo">
+      <h1>Obesity - A Serious Disease</h1>
+    </a>
+    <nav>
+       <ul>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="graph.html"  class="selected">Graph</a></li>
+         <li><a href="map.html">Map</a></li>
+      </ul>
+    </nav>
+    </header>
+	<h2>Obesity in the Canada among different age groups</h2>
+    <div id="outer" style=" margin-top: 0; ">
+      
+     
+  		
+      <div id="graph"> </div>
+	  <div id="inner">
+      <button class="button" id="button2" style="background:brown" onclick="update2()">All Ages 12 and over</button>
+      <button class="button" id="button" onclick="update()">Ages 20 to 34</button>
+      <button class="button" id="button3" onclick="update3()">Ages 34 to 44</button>
+      <button class="button" id="button4" onclick="update4()">Ages 44 to 64</button>
+      </div>
+	  <div id="tooltip" class="hidden"></div>
+		      
+        <div id="bar"> </div>
+        <p style="margin: 1px;"> User Guide:</p>
+        <p style="margin: 1px;">- Hover over a line to focus on it</p>
+        <p style="margin: 1px;">- Press on buttons to view different age categories</p>
+    </div>
+	      <footer>
+        <p>&copy;canadateam2020</p>
+      </footer>
+  </body>
+</html>
+    

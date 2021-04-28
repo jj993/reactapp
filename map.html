@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+		<title>Obesity map</title>
+		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+		<style type="text/css">
+			.bar {
+            fill: steelblue;
+        }
+
+        .highlight {
+            fill: red;
+        }
+        h1{
+        text-align: center;
+        }
+
+		</style>
+    
+    <link href='https://fonts.googleapis.com/css?family=Changa+One|Open+Sans:300italic,700italic,400,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet"  href="css/main.css">
+
+  </head>
+  <!-- Load d3.js -->
+
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <body>
+    <header style="margin-bottom: 2%;">
+
+      <a href = "index.html" id="logo">
+        <h1>Obesity - A Serious Disease</h1>
+      </a>
+    <nav>
+        <ul>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="graph.html">Graph</a></li>
+         <li><a href="map.html" class="selected">Map</a></li>
+        </ul>
+    </nav>
+    </header>
+    <h2>Obesity in the World (Highest to Lowest)</h2>
+<div id="OutDiv">
+	<!-- Create an element where the map will take place -->
+<svg id="my_dataviz" width="1100" height="500"></svg>
+</div>
+		<script type="text/javascript">
+
+			// The svg
+var svg = d3.select("svg"),
+  width = +svg.attr("width"),
+  height = +svg.attr("height");
+
+// Map and projection
+var path = d3.geoPath();
+var projection = d3.geoMercator()
+  .scale(70)
+  .center([0,20])
+  .translate([width / 2, height / 2]);
+
+// Data and color scale
+var data = d3.map();
+var colorScale = d3.scaleThreshold()
+  .domain([1000, 10000, 100000, 300000, 5000000, 1000000,5000000])
+  .range(d3.schemeReds[7]);
+
+// Load external data and boot
+d3.queue()
+  .defer(d3.json, "world.geojson")
+  .defer(d3.csv, "countries.csv", function(d) { data.set(d.code, +d.value); })
+  .await(ready);
+
+function ready(error, topo) {
+
+  let mouseOver = function(d) {
+    d3.selectAll(".Country")
+      .transition()
+      .duration(200)
+      .style("opacity", .5)
+    d3.select(this)
+      .transition()
+      .duration(200)
+      .style("opacity", 1)
+      .style("stroke", "black")
+      .text(d.properties.name);
+      //.select('#name').text(d.properties.name);
+  }
+
+  let mouseLeave = function(d) {
+    d3.selectAll(".Country")
+      .transition()
+      .duration(200)
+      .style("opacity", .8)
+    d3.select(this)
+      .transition()
+      .duration(200)
+      .style("stroke", "transparent")
+  }
+
+  // Draw the map
+  svg.append("g")
+    .selectAll("path")
+    .data(topo.features)
+    .enter()
+    .append("path")
+      // draw each country
+      .attr("d", d3.geoPath()
+        .projection(projection)
+      )
+      // set the color of each country
+      .attr("fill", function (d) {
+        d.total = data.get(d.id) || 0;
+        return colorScale(d.total);
+      })
+      .style("stroke", "transparent")
+      .attr("class", function(d){ return "Country" } )
+      .style("opacity", .8)
+      .on("mouseover", mouseOver )
+      .on("mouseleave", mouseLeave )
+    }
+
+		</script>
+		      <footer>
+        <p>&copy;canadateam2020</p>
+      </footer>
+  </body>
+</html>

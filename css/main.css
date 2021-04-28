@@ -1,0 +1,134 @@
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+#wrapper{
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+
+}
+a{
+  text-decoration: none;
+
+}
+img{
+  max-width: 100%;
+}
+h3{
+  margin: 0 0 1em 0;
+}
+/***********************
+         HEADING
+************************/
+
+header{
+  float: left;
+  margin: 0 0 30px 0;
+  padding: 5px 0 0 0;
+  width: 100%;
+  background: Brown;
+}
+#logo{
+  text-align: center;
+  margin: 0;
+}
+
+h1{
+  font-family: 'Changa One', sans-serif;
+  margin: 15px 0;
+  font-size: 1.75em;
+  font-weight: normal;
+  line-height: 0.8em;
+  color: White;
+}
+
+h2{
+    font-family:  courier,monospace;
+    font-size: 2em;
+    color: brown;
+    padding: 20px 0px 0px 2em;
+    text-align: center;
+    text-shadow: 2px 2px black;   
+}
+
+#wrapper h1{
+    padding-left: 40px;
+    color: brown;
+}
+/***********************
+       NAVIGATION
+************************/
+nav {
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0 0;
+}
+nav ul {
+  list-style: none;
+  margin: 0 10px;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+
+}
+
+nav a {
+  font-weight: 800;
+  padding: 15px 10px;
+  color: white;
+}
+nav a:visited {
+  color: black;
+}
+nav a:hover {
+  color: #007399;
+}
+a{
+color: white;
+}
+/***********************
+       FOOTER
+************************/
+footer{
+  font-size: 0.75em;
+  text-align: center;
+  clear: both;
+  padding-top: 50px;
+  color: black;
+}
+
+
+#gallery{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#gallery li {
+  float: left;
+  width: 100%;
+  margin: 2.5%;
+  margin-top: 0px;
+  background-color: #f5f5f5;
+  color: #bdc3c7;
+}
+
+#gallery li  p{
+  margin: 0;
+  padding: 5%;
+  font-size: 0.75em;
+  color: #bdc3c7;
+}
+
+body{
+  background-color: #fff;
+  color: #999;
+}
+
+#OutDiv{
+  background: #f0f0f0;
+  margin-left: 150px;
+  margin-right: 150px;
+}
